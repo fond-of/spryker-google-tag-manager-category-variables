@@ -5,11 +5,11 @@ namespace FondOfSpryker\Yves\GoogleTagManagerCategoryVariables\Plugin\Variables;
 use FondOfSpryker\Yves\GoogleTagManagerCore\Dependency\GoogleTagManagerExtensionPluginInterface;
 use Spryker\Yves\Kernel\AbstractPlugin;
 
-class CategorySizePlugin extends AbstractPlugin implements GoogleTagManagerExtensionPluginInterface
+class ContentTypePlugin extends AbstractPlugin implements GoogleTagManagerExtensionPluginInterface
 {
-    public const PARAM_PRODUCTS = 'products';
+    public const PARAM_CONTENT_TYPE = 'contentType';
 
-    public const FIELD_CATEGORY_SIZE = 'categorySize';
+    public const FIELD_CONTENT_TYPE = 'contentType';
 
     /**
      * @param string $page
@@ -19,12 +19,12 @@ class CategorySizePlugin extends AbstractPlugin implements GoogleTagManagerExten
      */
     public function addVariable(string $page, array $params): array
     {
-        if (!isset($params[static::PARAM_PRODUCTS])) {
+        if (!isset($params[static::PARAM_CONTENT_TYPE])) {
             return [];
         }
 
         return [
-            static::FIELD_CATEGORY_SIZE => count($params[static::PARAM_PRODUCTS]),
+            static::FIELD_CONTENT_TYPE => $params[static::PARAM_CONTENT_TYPE],
         ];
     }
 }
